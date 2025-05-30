@@ -1,0 +1,42 @@
+<form [formGroup]="newTechnician" (ngSubmit)="onSubmit()">
+  <label>
+    Meno:
+    <input formControlName="name" />
+  </label>
+  <div *ngIf="newTechnician.get('name')?.invalid && newTechnician.get('name')?.touched">
+    Meno je povinné.
+  </div>
+
+  <label>
+    Priezvisko:
+    <input formControlName="lastName" />
+  </label>
+  <div *ngIf="newTechnician.get('lastName')?.invalid && newTechnician.get('lastName')?.touched">
+    Priezvisko je povinné.
+  </div>
+
+  <div formArrayName="identificators">
+    <h4>Identifikátory:</h4>
+
+    <div [formGroupName]="0" style="margin-bottom: 10px;">
+      <label>EK:
+        <input formControlName="identificator" placeholder="Zadaj EK identifikátor" />
+      </label>
+    </div>
+
+    <div [formGroupName]="1" style="margin-bottom: 10px;">
+      <label>TK:
+        <input formControlName="identificator" placeholder="Zadaj TK identifikátor" />
+      </label>
+    </div>
+
+    <div [formGroupName]="2" style="margin-bottom: 10px;">
+      <label>KO:
+        <input formControlName="identificator" placeholder="Zadaj KO identifikátor" />
+      </label>
+    </div>
+  </div>
+
+  <br />
+  <button type="submit" [disabled]="newTechnician.invalid">Odoslať</button>
+</form>

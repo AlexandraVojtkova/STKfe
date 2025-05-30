@@ -1,0 +1,36 @@
+<app-button url="../components/import-technician" text="Vložiť nového technika"/>
+<table>
+  <thead>
+  <tr>
+    <th>Meno</th>
+    <th>Priezvisko</th>
+    <th>Identifikátory</th>
+    <th>Akcia</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let technician of technicianData; let i = index">
+    <td>
+      <input [(ngModel)]="technician.name" name="name_{{ i }}" />
+    </td>
+    <td>
+      <input [(ngModel)]="technician.lastName" name="lastName_{{ i }}" />
+    </td>
+    <td>
+      <ul>
+        <li *ngFor="let ident of technician.identificators; let j = index">
+          <input [(ngModel)]="ident.identificator" name="ident_{{ i }}_{{ j }}" placeholder="Identifikátor" />
+          <input [(ngModel)]="ident.controlType" name="type_{{ i }}_{{ j }}" placeholder="Typ" />
+        </li>
+      </ul>
+    </td>
+    <td>
+      <button (click)="updateTechnician(technician)">Uložiť</button>
+      <button (click)="deleteTechnician(technician)">Vymazať</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+

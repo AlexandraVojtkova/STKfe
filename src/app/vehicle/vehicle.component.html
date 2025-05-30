@@ -1,0 +1,10 @@
+<div>
+  <input
+    [(ngModel)]="vinFilter"
+    placeholder="Zadaj VIN"
+    (keyup.enter)="search(vinFilter)"
+  />
+  <button (click)="search(vinFilter)">Vyhľadaj</button>
+</div>
+
+<app-table *ngIf="filteredVehicles.length > 0" [data]="filteredVehicles"></app-table>

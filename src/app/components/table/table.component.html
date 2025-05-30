@@ -1,0 +1,37 @@
+<table>
+  <thead>
+  <tr>
+    <th *ngFor="let key of keys">
+      <input [(ngModel)]="filters[key]" [placeholder]="key" />
+    </th>
+  </tr>
+  <tr>
+    <th *ngFor="let key of keys">
+      {{ key }}
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of paginatedData">
+    <td *ngFor="let key of keys">
+      {{ item[key] }}
+    </td>
+  </tr>
+  <tr *ngIf="paginatedData.length === 0">
+    <td colspan="100%">Žiadne výsledky.</td>
+  </tr>
+  </tbody>
+</table>
+
+<!-- Stránkovanie -->
+<div style="margin-top: 10px;">
+  <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">« Predošlá</button>
+  <button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    (click)="changePage(i + 1)"
+    [disabled]="currentPage === i + 1"
+  >
+    {{ i + 1 }}
+  </button>
+  <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">Ďalšia »</button>
+</div>

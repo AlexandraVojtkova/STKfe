@@ -1,0 +1,15 @@
+<form (submit)="onUploadEk()">
+  <label for="ekFile">Vložiť dáta pre EK</label>
+  <input type="file" id="ekFile" (change)="onFileSelected($event)" />
+  <button type="submit">Nahrať</button>
+</form>
+<form (submit)="onUploadTk()">
+  <label for="tkFile">Vložiť dáta pre TK</label>
+  <input type="file" id="tkFile" (change)="onFileSelected($event)" />
+  <button type="submit">Nahrať</button>
+</form>
+<form (submit)="onUploadKo()">
+  <label for="koFile">Vložiť dáta pre KO</label>
+  <input type="file" id="koFile" (change)="onFileSelected($event)" />
+  <button type="submit">Nahrať</button>
+</form>
